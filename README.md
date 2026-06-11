@@ -1,8 +1,21 @@
-# go2-control
+# Unitree Go2 — Control & Streaming Scripts
 
-Standalone control and video-streaming scripts for the Unitree Go2, built **on top of**
-the [`go2_webrtc_driver`](https://github.com/legion1581/go2_webrtc_connect). The driver
-is consumed as a dependency — this repo contains only the scripts.
+Standalone control and video-streaming scripts for the Unitree Go2, built on top of
+the [`go2_webrtc_connect`](https://github.com/legion1581/go2_webrtc_connect) driver
+(pulled in as a dependency — this repo is the scripts layer).
+
+The project explores different ways to pilot and perceive through the robot. Today it
+supports driving the Go2 and viewing its video feed from a **laptop** or a **VR headset**,
+both through a single webpage.
+
+## Roadmap
+- **Next — VR telepresence:** a bot-mounted, servo-actuated camera streamed to the
+  headset, with the view following either head rotation (head-coupled) or joystick input
+  for look-around control.
+- **Long term — BCI control:** an experimental brain–computer interface as an additional
+  input channel.
+
+Ideas and suggestions for other control or feedback channels are welcome.
 
 
 ## Demo on Meta Quest 3S VR headset
