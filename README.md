@@ -4,6 +4,9 @@ Standalone control and video-streaming scripts for the Unitree Go2, built **on t
 the [`go2_webrtc_driver`](https://github.com/legion1581/go2_webrtc_connect). The driver
 is consumed as a dependency — this repo contains only the scripts.
 
+
+##Demo on Meta Quest 3S VR headset
+https://github.com/Us3r369/go_2_pro_teleoperation/issues/1#issue-4641359041
 ## Layout
 
 ```
