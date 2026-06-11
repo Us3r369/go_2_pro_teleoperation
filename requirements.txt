@@ -1,0 +1,9 @@
+# The Go2 WebRTC driver is installed separately in editable mode (run first):
+#   pip install -e ../go2_webrtc_connect
+#
+# Then install this project's own dependencies:
+#   pip install -r requirements.txt   (or: pip install -e .)
+
+flask>=3.0.0
+opencv-python
+numpy
