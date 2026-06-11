@@ -5,8 +5,8 @@ the [`go2_webrtc_driver`](https://github.com/legion1581/go2_webrtc_connect). The
 is consumed as a dependency — this repo contains only the scripts.
 
 
-##Demo on Meta Quest 3S VR headset
-https://github.com/Us3r369/go_2_pro_teleoperation/issues/1#issue-4641359041
+## Demo on Meta Quest 3S VR headset
+[https://github.com/Us3r369/go_2_pro_teleoperation/issues/1#issue-4641359041](https://github.com/user-attachments/assets/1c7acdb2-2bc8-4a18-95b1-227625456314)
 ## Layout
 
 ```
