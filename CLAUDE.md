@@ -29,6 +29,9 @@ scripts/
   webrtc_headless_stream.py    # serve camera as MJPEG over HTTP (no controls)
   remote_control.py            # web UI: live video + basic movement buttons — MOVES THE ROBOT
   remote_control_advanced.py   # web UI: video + full action/trick set (incl. flips) — MOVES THE ROBOT
+  vr_joystick_debug.py         # HTTPS WebXR page: read Quest 3/3S thumbsticks + 6DoF head pose, stream to laptop, log to logs/ — NO ROBOT (stdlib only)
+tests/
+  test_vr_joystick_debug.py    # hardware-free unit tests for the VR input→velocity mapping
 pyproject.toml                 # project metadata + deps (scripts-only, no importable package)
 requirements.txt               # runtime deps (flask, opencv-python, numpy)
 README.md

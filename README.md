@@ -30,6 +30,7 @@ scripts/
   webrtc_headless_stream.py    # serve the camera as MJPEG over HTTP (no controls)
   remote_control.py            # web UI: live video + basic movement buttons
   remote_control_advanced.py   # web UI: live video + full action/trick controls
+  vr_joystick_debug.py         # HTTPS WebXR page: read Quest 3/3S thumbsticks + head pose (no robot motion)
 ```
 
 ## Setup
@@ -57,7 +58,13 @@ line to match your robot before running.
 python scripts/sportmode_simple.py
 python scripts/display_video_channel.py
 python scripts/remote_control_advanced.py     # then open http://localhost:8080
+python scripts/vr_joystick_debug.py           # then open the printed https:// URL in the headset
 ```
+
+> `vr_joystick_debug.py` is stdlib-only and never commands the robot — it serves a WebXR
+> page over HTTPS (WebXR requires a secure context) and logs the headset's thumbstick and
+> head-pose input to `logs/`. It's a debug/telemetry harness for the upcoming VR control
+> work, runnable without the robot connected.
 
 > The web-control scripts (`remote_control*.py`, `webrtc_headless_stream.py`) bind to
 > `0.0.0.0:8080`, so anything on your local network can reach them. There is no

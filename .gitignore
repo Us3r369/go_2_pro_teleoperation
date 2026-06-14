@@ -24,3 +24,9 @@ venv/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+
+# Local self-signed certs for the VR (HTTPS) debug server
+.certs/
+
+# VR debug session logs
+logs/
