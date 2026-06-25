@@ -31,6 +31,10 @@ scripts/
   remote_control.py            # web UI: live video + basic movement buttons
   remote_control_advanced.py   # web UI: live video + full action/trick controls
   vr_joystick_debug.py         # HTTPS WebXR page: read Quest 3/3S thumbsticks + head pose (no robot motion)
+  servo_bridge.py              # head yaw -> UDP -> ESP32 pan servo (no robot motion)
+esp32/
+  servo_sweep/                 # PlatformIO: standalone servo sweep demo (XIAO ESP32-S3)
+  servo_udp/                   # PlatformIO: WiFi UDP servo receiver, paired with servo_bridge.py
 ```
 
 ## Setup
@@ -65,6 +69,27 @@ python scripts/vr_joystick_debug.py           # then open the printed https:// U
 > page over HTTPS (WebXR requires a secure context) and logs the headset's thumbstick and
 > head-pose input to `logs/`. It's a debug/telemetry harness for the upcoming VR control
 > work, runnable without the robot connected.
+
+### Head-tracked camera servo (VR → ESP32)
+
+`servo_bridge.py` maps the headset's **yaw** (left/right look — the camera rig is currently
+1-DOF) to a pan-servo angle and streams it over UDP to the ESP32 (`esp32/servo_udp`). The
+ESP32 discovers itself via a broadcast beacon, so no IP needs hardcoding.
+
+```bash
+# 1. flash the ESP32 (copy esp32/servo_udp/src/secrets.h.example -> secrets.h first):
+#    pio run -t upload -d esp32/servo_udp
+
+# 2. PROVE THE PIPE FIRST with a synthetic sweep — the servo should pan smoothly back/forth:
+python scripts/servo_bridge.py --source synthetic
+
+# 3. then drive it from real head motion (run vr_joystick_debug.py too, enter VR on the Quest):
+python scripts/servo_bridge.py --source headpose
+```
+
+> Put the laptop, ESP32, and (for step 3) the Quest on the **same network**. `servo_bridge.py`
+> is stdlib-only and never commands the robot — it drives only the camera servo. The ESP32
+> slew-limits the motion and holds position if the stream goes stale (input watchdog).
 
 > The web-control scripts (`remote_control*.py`, `webrtc_headless_stream.py`) bind to
 > `0.0.0.0:8080`, so anything on your local network can reach them. There is no

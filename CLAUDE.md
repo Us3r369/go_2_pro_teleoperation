@@ -30,8 +30,13 @@ scripts/
   remote_control.py            # web UI: live video + basic movement buttons — MOVES THE ROBOT
   remote_control_advanced.py   # web UI: video + full action/trick set (incl. flips) — MOVES THE ROBOT
   vr_joystick_debug.py         # HTTPS WebXR page: read Quest 3/3S thumbsticks + 6DoF head pose, stream to laptop, log to logs/ — NO ROBOT (stdlib only)
+  servo_bridge.py              # head yaw (or synthetic sweep) → UDP → ESP32 pan servo — NO ROBOT (stdlib only)
+esp32/
+  servo_sweep/                 # PlatformIO: standalone servo sweep demo (XIAO ESP32-S3)
+  servo_udp/                   # PlatformIO: WiFi UDP servo receiver — paired with servo_bridge.py (secrets.h gitignored)
 tests/
   test_vr_joystick_debug.py    # hardware-free unit tests for the VR input→velocity mapping
+  test_servo_bridge.py         # hardware-free unit tests for the head-yaw→servo mapping + UDP transport
 pyproject.toml                 # project metadata + deps (scripts-only, no importable package)
 requirements.txt               # runtime deps (flask, opencv-python, numpy)
 README.md

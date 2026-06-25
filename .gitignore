@@ -30,3 +30,9 @@ venv/
 
 # VR debug session logs
 logs/
+
+# PlatformIO / ESP32 build artifacts
+.pio/
+
+# ESP32 WiFi credentials (copy secrets.h.example -> secrets.h)
+secrets.h
